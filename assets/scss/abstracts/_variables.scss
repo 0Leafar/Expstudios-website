@@ -1,0 +1,76 @@
+// =============================================================
+// _variables.scss — tokens Sass (valeurs fixes, compilées)
+// Les couleurs qui changent selon le thème sont dans base/_root.scss
+// =============================================================
+
+// ---------- Palette brute ----------
+$violet-500: #7057e8;
+$violet-600: #5f47d9;
+$violet-300: #9d8cf5;
+$violet-100: #ebe7fb;
+
+$green-400: #64bf8a;
+
+$traffic-red: #ff5f57;
+$traffic-yellow: #febc2e;
+$traffic-green: #28c840;
+
+// Thème clair
+$light-bg: #f4f3f7;
+$light-bg-hero: #f2f0f9;
+$light-bg-alt: #eeecf4;
+$light-bg-contact: #eae5f7;
+$light-surface: #fdfdfd;
+$light-surface-2: #eceaf3;
+$light-menubar: #f9f8fb;
+$light-text: #22212b;
+$light-text-muted: #6b687b;
+$light-text-soft: #8a8798;
+$light-border: #dcd9e7;
+$light-tag-bg: #ebe9f2;
+
+// Thème sombre
+$dark-bg: #141419;
+$dark-bg-hero: #1a1922;
+$dark-bg-alt: #1a1921;
+$dark-bg-contact: #252030;
+$dark-surface: #1f1f25;
+$dark-surface-2: #1b1a22;
+$dark-menubar: #1c1c22;
+$dark-text: #f3f1fa;
+$dark-text-muted: #aca8ba;
+$dark-text-soft: #85818f;
+$dark-border: #34313f;
+$dark-tag-bg: #2a2833;
+
+// ---------- Typographie ----------
+$font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+$font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+
+$fw-regular: 400;
+$fw-medium: 500;
+$fw-semibold: 600;
+
+// ---------- Mise en page ----------
+$container-max: 1264px;
+$container-pad: 24px;
+$container-pad-lg: 88px;
+
+$radius-sm: 6px;
+$radius-md: 8px;
+$radius-lg: 14px;
+$radius-pill: 999px;
+
+// ---------- Breakpoints ----------
+$breakpoints: (
+  "sm": 576px,
+  "md": 768px,
+  "lg": 1024px,
+  "xl": 1280px,
+);
+
+// ---------- Animation ----------
+$ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+$duration-fast: 0.18s;
+$duration: 0.35s;
+$duration-slow: 0.7s;

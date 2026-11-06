@@ -1,0 +1,85 @@
+// =============================================================
+// _contact.scss — 04 / On appuie sur start ?
+// =============================================================
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.contact {
+  padding-top: 48px;
+  background: var(--bg-contact);
+  border-top: 1px solid var(--border);
+
+  @include mq(lg) {
+    padding-top: 64px;
+  }
+
+  &__grid {
+    display: grid;
+    gap: 22px;
+
+    @include mq(lg) {
+      grid-template-columns: 1fr 494px;
+      gap: 80px;
+      align-items: start;
+    }
+  }
+
+  &__intro {
+    @include mq(lg) {
+      padding-top: 20px;
+    }
+  }
+
+  &__title {
+    font-size: clamp(36px, 9.5vw, 64px);
+    font-weight: $fw-regular;
+    letter-spacing: -0.04em;
+    line-height: 1.08;
+
+    span {
+      display: block;
+    }
+  }
+
+  &__text {
+    font-size: 14.5px;
+    line-height: 1.72;
+    margin-block: 20px 22px;
+
+    @include mq(lg) {
+      margin-block: 30px 34px;
+    }
+  }
+
+  &__mail {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--accent-text);
+    font-size: clamp(26px, 7vw, 32px);
+    letter-spacing: -0.03em;
+    color: var(--accent-text);
+
+    svg {
+      width: 20px;
+      height: 20px;
+      transition: transform $duration $ease-out;
+    }
+
+    &:hover svg {
+      transform: translate(4px, -4px);
+    }
+  }
+
+  &__links {
+    display: flex;
+    gap: 26px;
+    margin-top: 20px;
+    font-size: 12.5px;
+
+    .link-arrow {
+      font-size: 12.5px;
+    }
+  }
+}

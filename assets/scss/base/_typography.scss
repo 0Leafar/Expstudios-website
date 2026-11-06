@@ -1,0 +1,44 @@
+// =============================================================
+// _typography.scss
+// =============================================================
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+body {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text);
+  background-color: var(--bg);
+  font-feature-settings: "cv11", "ss01";
+  transition: background-color $duration $ease-out, color $duration $ease-out;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: $fw-semibold;
+  color: var(--text);
+}
+
+p {
+  color: var(--text-muted);
+}
+
+.mono {
+  font-family: var(--font-mono);
+}
+
+// Libellé de section : "01 / LES JEUX"
+.eyebrow {
+  @include mono-label(11px, 0.16em);
+  display: block;
+  color: var(--accent-text);
+  font-weight: $fw-medium;
+  margin-bottom: 14px;
+}
+
+.section-title {
+  @include display(clamp(36px, 7vw, 52px));
+  line-height: 1.04;
+}

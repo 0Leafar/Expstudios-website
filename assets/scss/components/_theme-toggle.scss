@@ -1,0 +1,73 @@
+// =============================================================
+// _theme-toggle.scss — interrupteur ☀ / ☾
+// =============================================================
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.theme-toggle {
+  position: relative;
+  display: inline-flex;
+  gap: 4px;
+  padding: 4px;
+  border: 1px solid var(--border);
+  border-radius: $radius-pill;
+  background: var(--surface);
+
+  [data-theme="dark"] & {
+    background: transparent;
+  }
+
+  // Pastille qui glisse derrière l'icône active
+  &::before {
+    content: "";
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--accent-soft);
+    transition: transform $duration $ease-out;
+  }
+
+  [data-theme="dark"] &::before {
+    transform: translateX(30px);
+
+    @include mq-down(sm) {
+      transform: translateX(28px);
+    }
+  }
+
+  @include mq-down(sm) {
+    &::before {
+      width: 24px;
+      height: 24px;
+    }
+
+    &__btn {
+      width: 24px !important;
+      height: 24px !important;
+    }
+  }
+
+  &__btn {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    color: var(--text);
+    @include transition(color);
+
+    svg {
+      width: 15px;
+      height: 15px;
+    }
+
+    &[aria-pressed="true"] {
+      color: var(--accent-text);
+    }
+  }
+}

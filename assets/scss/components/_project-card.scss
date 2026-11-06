@@ -1,0 +1,107 @@
+// =============================================================
+// _project-card.scss — carte dépôt GitHub (projets dev)
+// =============================================================
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: $radius-lg;
+  overflow: hidden;
+  transition: transform $duration $ease-out, box-shadow $duration $ease-out, border-color $duration;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-card);
+    border-color: color-mix(in srgb, var(--accent) 35%, var(--border));
+  }
+
+  &__bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    height: 40px;
+    padding-inline: 15px;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface-2);
+  }
+
+  &__repo {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__badge {
+    @include mono-label(9.5px, 0.08em);
+    margin-left: auto;
+    padding: 3px 8px;
+    border-radius: $radius-pill;
+    background: var(--accent-soft);
+    color: var(--accent-text);
+    white-space: nowrap;
+  }
+
+  &__body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 22px 21px 21px;
+  }
+
+  &__title {
+    font-size: 21px;
+    font-weight: $fw-semibold;
+    letter-spacing: -0.025em;
+    line-height: 1.2;
+    margin-bottom: 10px;
+  }
+
+  &__desc {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 18px;
+  }
+
+  .tags {
+    margin-bottom: 20px;
+  }
+
+  &__links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 18px;
+    margin-top: auto;
+  }
+
+  // ---------- Portfolio mis en avant ----------
+  &--featured {
+    background:
+      radial-gradient(120% 90% at 100% 0%, var(--hero-glow), transparent 60%),
+      var(--surface);
+
+    .project-card__title {
+      @include display(clamp(28px, 6vw, 36px));
+      line-height: 1.1;
+      margin-bottom: 14px;
+    }
+
+    .project-card__desc {
+      font-size: 15px;
+      max-width: 520px;
+    }
+
+    .project-card__body {
+      @include mq(md) {
+        padding: 30px 30px 28px;
+      }
+    }
+  }
+}

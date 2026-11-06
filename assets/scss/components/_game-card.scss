@@ -1,0 +1,173 @@
+// =============================================================
+// _game-card.scss — fiche jeu (Lueur, Orbite Zéro, Petit Chaos)
+// =============================================================
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.game-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: $radius-lg;
+  overflow: hidden;
+  transition: transform $duration $ease-out, box-shadow $duration $ease-out;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-card);
+  }
+
+  &__media {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+
+    > img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform $duration-slow $ease-out;
+    }
+  }
+
+  &:hover &__media > img {
+    transform: scale(1.04);
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    padding: 24px 21px 21px;
+
+    @include mq(md) {
+      padding: 26px 25px 25px;
+    }
+  }
+
+  &__head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+
+  &__title {
+    @include display(28px);
+    letter-spacing: -0.035em;
+    line-height: 1.1;
+  }
+
+  &__count {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-muted);
+    white-space: nowrap;
+  }
+
+  &__tagline {
+    font-size: 14.5px;
+    font-weight: $fw-semibold;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+
+  &__desc {
+    font-size: 15px;
+    line-height: 1.55;
+    margin-bottom: 18px;
+  }
+
+  &__features {
+    display: grid;
+    gap: 6px;
+    margin-bottom: 18px;
+
+    li {
+      position: relative;
+      padding-left: 18px;
+      font-size: 13.5px;
+      line-height: 1.5;
+      color: var(--text);
+
+      &::before {
+        content: "";
+        position: absolute;
+        left: 2px;
+        top: 0.62em;
+        width: 6px;
+        height: 6px;
+        border-radius: 2px;
+        background: var(--accent);
+        transform: rotate(45deg);
+      }
+    }
+  }
+
+  .tags {
+    margin-bottom: 20px;
+  }
+
+  &__role {
+    font-size: 12.5px;
+    color: var(--text-muted);
+  }
+
+  &__meta {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 4px;
+    margin-bottom: 18px;
+  }
+
+  .btn {
+    align-self: flex-start;
+  }
+
+  // ---------- Variante "à la une" (Lueur) ----------
+  &--featured {
+    .window__bar {
+      order: -1;
+    }
+
+    @include mq(lg) {
+      &:hover {
+        transform: none;
+      }
+
+      .game-card__layout {
+        display: grid;
+        grid-template-columns: 759fr 503fr;
+      }
+
+      .game-card__media {
+        aspect-ratio: auto;
+        min-height: 430px;
+      }
+
+      .game-card__body {
+        justify-content: center;
+        padding: 32px 32px 32px 32px;
+      }
+
+      .game-card__title {
+        font-size: 36px;
+      }
+    }
+  }
+
+  // ---------- Image à droite (alternance) ----------
+  &--reverse {
+    @include mq(lg) {
+      .game-card__layout {
+        grid-template-columns: 503fr 759fr;
+      }
+
+      .game-card__media {
+        order: 2;
+      }
+    }
+  }
+}

@@ -1,0 +1,64 @@
+// =============================================================
+// _terminal.scss — fenêtre "atelier — zsh"
+// =============================================================
+@use "../abstracts/variables" as *;
+
+.terminal {
+  .window__bar {
+    height: 43px;
+  }
+
+  &__body {
+    padding: 20px 19px 22px;
+    background: var(--surface-2);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    line-height: 24px;
+    min-height: 124px;
+  }
+
+  &__prompt {
+    color: var(--text-muted);
+  }
+
+  &__ok {
+    color: var(--accent-text);
+  }
+
+  &__wait {
+    color: var(--text);
+  }
+
+  // Lignes qui apparaissent une à une (piloté en JS)
+  &__line {
+    opacity: 0;
+    transform: translateY(4px);
+    transition: opacity $duration $ease-out, transform $duration $ease-out;
+
+    &.is-visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    .no-js & {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  &__cursor {
+    display: inline-block;
+    width: 2px;
+    height: 14px;
+    margin-left: 4px;
+    vertical-align: -2px;
+    background: var(--text);
+    animation: blink 1.05s steps(1) infinite;
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}

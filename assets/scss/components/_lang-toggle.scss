@@ -1,0 +1,76 @@
+// =============================================================
+// _lang-toggle.scss — sélecteur FR / EN (même style que le thème)
+// =============================================================
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.lang-toggle {
+  position: relative;
+  display: inline-flex;
+  gap: 4px;
+  padding: 4px;
+  border: 1px solid var(--border);
+  border-radius: $radius-pill;
+  background: var(--surface);
+
+  [data-theme="dark"] & {
+    background: transparent;
+  }
+
+  // Pastille qui glisse derrière la langue active
+  &::before {
+    content: "";
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 26px;
+    height: 26px;
+    border-radius: $radius-pill;
+    background: var(--accent-soft);
+    transition: transform $duration $ease-out;
+  }
+
+  :root[lang="en"] &::before {
+    transform: translateX(30px);
+
+    @include mq-down(sm) {
+      transform: translateX(28px);
+    }
+  }
+
+  @include mq-down(sm) {
+    &::before {
+      width: 24px;
+      height: 24px;
+    }
+
+    &__btn {
+      width: 24px !important;
+      height: 24px !important;
+    }
+  }
+
+  &__btn {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    width: 26px;
+    height: 26px;
+    border-radius: $radius-pill;
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    font-weight: $fw-medium;
+    letter-spacing: 0.02em;
+    color: var(--text-muted);
+    @include transition(color);
+
+    &:hover {
+      color: var(--text);
+    }
+
+    &[aria-pressed="true"] {
+      color: var(--accent-text);
+    }
+  }
+}

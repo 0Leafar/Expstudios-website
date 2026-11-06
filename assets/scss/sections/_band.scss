@@ -1,0 +1,59 @@
+// =============================================================
+// _band.scss — bandeau "IMAGINER. CODER. JOUER. RECOMMENCER."
+// =============================================================
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.band {
+  border-block: 1px solid var(--border);
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.03em;
+    color: var(--text-muted);
+
+    @include mq(lg) {
+      height: 52px;
+      font-size: 11px;
+    }
+  }
+
+  &__aside {
+    display: none;
+
+    @include mq(md) {
+      display: inline;
+    }
+  }
+
+  &__arrow {
+    display: inline-flex;
+    color: var(--accent-text);
+    animation: nudge 2.2s $ease-out infinite;
+
+    svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    @include mq(md) {
+      display: none;
+    }
+  }
+}
+
+@keyframes nudge {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(3px);
+  }
+}

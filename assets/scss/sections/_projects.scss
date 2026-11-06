@@ -1,0 +1,39 @@
+// =============================================================
+// _projects.scss — 02 / Mes autres projets dev
+// (réutilise .games__head et .games__foot pour l'en-tête et le pied)
+// =============================================================
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.projects {
+  padding-block: 8px 64px;
+
+  @include mq(lg) {
+    padding-block: 0 96px;
+  }
+
+  &__grid {
+    display: grid;
+    gap: 20px;
+
+    @include mq(md) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    @include mq(lg) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    // Le portfolio prend 2 colonnes
+    .project-card--featured {
+      @include mq(md) {
+        grid-column: 1 / -1;
+      }
+
+      @include mq(lg) {
+        grid-column: span 2;
+      }
+    }
+  }
+}

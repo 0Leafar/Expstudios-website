@@ -1,0 +1,56 @@
+// =============================================================
+// _base.scss — éléments globaux
+// =============================================================
+@use "../abstracts/mixins" as *;
+
+::selection {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+:focus-visible {
+  @include focus-ring;
+}
+
+.container {
+  width: 100%;
+  max-width: calc(var(--container) + var(--gutter) * 2);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+
+  @include mq(md) {
+    --gutter: 40px;
+  }
+
+  @include mq(lg) {
+    --gutter: 88px;
+    max-width: calc(var(--container) + 176px);
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 16px;
+  z-index: 100;
+  padding: 10px 16px;
+  border-radius: 8px;
+  background: var(--accent);
+  color: var(--on-accent);
+
+  &:focus {
+    top: 16px;
+  }
+}

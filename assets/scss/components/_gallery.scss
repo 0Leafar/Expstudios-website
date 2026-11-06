@@ -1,0 +1,74 @@
+// =============================================================
+// _gallery.scss — image principale + miniatures cliquables
+// =============================================================
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.gallery {
+  position: relative;
+  background: #0d0e14;
+
+  &__main {
+    transition: opacity $duration-fast $ease-out, transform $duration-slow $ease-out;
+
+    &.is-switching {
+      opacity: 0;
+    }
+  }
+
+  &__thumbs {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    z-index: 1;
+    display: flex;
+    gap: 5px;
+    padding: 4px;
+    border-radius: 10px;
+    background: rgba(10, 11, 18, 0.55);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    @include mq(md) {
+      left: 16px;
+      bottom: 16px;
+      gap: 8px;
+    }
+  }
+
+  &__thumb {
+    position: relative;
+    width: 40px;
+    aspect-ratio: 16 / 10;
+    border-radius: 5px;
+    overflow: hidden;
+    opacity: 0.6;
+    outline: 2px solid transparent;
+    outline-offset: 0;
+    transition: opacity $duration-fast, outline-color $duration-fast, transform $duration-fast $ease-out;
+
+    @include mq(md) {
+      width: 68px;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    &:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+
+    &.is-active {
+      opacity: 1;
+      outline-color: #fff;
+    }
+
+    &:focus-visible {
+      @include focus-ring;
+    }
+  }
+}

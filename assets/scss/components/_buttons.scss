@@ -1,0 +1,94 @@
+// =============================================================
+// _buttons.scss
+// =============================================================
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  height: 48px;
+  padding-inline: 18px;
+  border-radius: $radius-md;
+  border: 1px solid transparent;
+  font-size: 15px;
+  font-weight: $fw-semibold;
+  white-space: nowrap;
+  @include transition(background-color, border-color, color, transform, box-shadow);
+
+  svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    transition: transform $duration-fast $ease-out;
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+
+  &--sm {
+    height: 40px;
+    font-size: 14px;
+  }
+
+  &--primary {
+    background: var(--accent);
+    color: var(--on-accent);
+    box-shadow: 0 8px 20px -10px rgba(112, 87, 232, 0.7);
+
+    &:hover {
+      background: var(--accent-hover);
+    }
+  }
+
+  &--ghost {
+    background: var(--surface);
+    border-color: var(--border);
+    color: var(--text);
+
+    [data-theme="dark"] & {
+      background: transparent;
+    }
+
+    &:hover {
+      border-color: var(--accent);
+    }
+  }
+
+  // Flèche qui glisse au survol
+  &:hover .icon-arrow-down {
+    transform: translateY(2px);
+  }
+
+  &:hover .icon-arrow-ne {
+    transform: translate(2px, -2px);
+  }
+}
+
+// Lien texte avec flèche ↗
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  font-weight: $fw-semibold;
+  color: var(--accent-text);
+
+  svg {
+    width: 11px;
+    height: 11px;
+    transition: transform $duration-fast $ease-out;
+  }
+
+  &:hover svg {
+    transform: translate(2px, -2px);
+  }
+
+  &--plain {
+    color: var(--text);
+    font-weight: $fw-medium;
+  }
+}

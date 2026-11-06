@@ -1,0 +1,41 @@
+// =============================================================
+// main.scss — point d'entrée, compile vers assets/css/main.css
+//   npx sass assets/scss/main.scss assets/css/main.css --watch
+// =============================================================
+
+// Base
+@use "base/root";
+@use "base/reset";
+@use "base/typography";
+@use "base/base";
+
+// Composants
+@use "components/buttons";
+@use "components/window";
+@use "components/tags";
+@use "components/status";
+@use "components/theme-toggle";
+@use "components/lang-toggle";
+@use "components/project-card";
+@use "components/gallery";
+@use "components/teaser";
+@use "components/terminal";
+@use "components/game-card";
+@use "components/stats";
+
+// Layout
+@use "layout/menubar";
+@use "layout/header";
+@use "layout/footer";
+
+// Sections
+@use "sections/hero";
+@use "sections/band";
+@use "sections/games";
+@use "sections/projects";
+@use "sections/about";
+@use "sections/process";
+@use "sections/contact";
+
+// Utilitaires
+@use "utilities/animations";

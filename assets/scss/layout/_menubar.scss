@@ -1,0 +1,71 @@
+// =============================================================
+// _menubar.scss — barre façon macOS (desktop uniquement)
+// =============================================================
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.menubar {
+  display: none;
+
+  @include mq(lg) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 32px;
+    padding-inline: 28px 36px;
+    background: var(--menubar);
+    border-bottom: 1px solid var(--border);
+    font-size: 11.5px;
+  }
+
+  &__left,
+  &__right {
+    display: flex;
+    align-items: center;
+  }
+
+  &__left {
+    gap: 24px;
+
+    a {
+      color: var(--text-muted);
+      @include transition(color);
+
+      &:hover {
+        color: var(--text);
+      }
+    }
+  }
+
+  &__logo {
+    width: 13px;
+    height: 13px;
+    color: var(--text);
+    margin-right: 6px;
+  }
+
+  &__name {
+    font-weight: $fw-semibold;
+    color: var(--text);
+  }
+
+  &__right {
+    gap: 16px;
+    color: var(--text);
+  }
+
+  &__label {
+    @include mono-label(10px, 0.06em);
+    color: var(--text-muted);
+  }
+
+  &__wifi {
+    width: 14px;
+    height: 14px;
+  }
+
+  &__lang {
+    font-size: 11px;
+    font-weight: $fw-medium;
+  }
+}

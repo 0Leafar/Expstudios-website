@@ -1,0 +1,51 @@
+// =============================================================
+// _mixins.scss
+// =============================================================
+@use "sass:map";
+@use "variables" as *;
+
+// Media query mobile-first : @include mq(md) { ... }
+@mixin mq($bp) {
+  $value: map.get($breakpoints, $bp);
+  @if not $value {
+    @error "Breakpoint inconnu : #{$bp}";
+  }
+  @media (min-width: $value) {
+    @content;
+  }
+}
+
+// Media query inverse : @include mq-down(md) { ... }
+@mixin mq-down($bp) {
+  $value: map.get($breakpoints, $bp);
+  @media (max-width: ($value - 0.02px)) {
+    @content;
+  }
+}
+
+// Petit libellé monospace en capitales ("01 / LES JEUX")
+@mixin mono-label($size: 11px, $spacing: 0.08em) {
+  font-family: $font-mono;
+  font-size: $size;
+  letter-spacing: $spacing;
+  text-transform: uppercase;
+}
+
+// Titre display serré
+@mixin display($size) {
+  font-size: $size;
+  font-weight: $fw-semibold;
+  line-height: 1;
+  letter-spacing: -0.045em;
+}
+
+@mixin focus-ring {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+@mixin transition($props...) {
+  transition-property: $props;
+  transition-duration: $duration-fast;
+  transition-timing-function: $ease-out;
+}

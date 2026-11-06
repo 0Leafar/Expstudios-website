@@ -1,0 +1,72 @@
+// =============================================================
+// _root.scss — custom properties CSS (thème clair / sombre)
+// Le thème est piloté par l'attribut data-theme sur <html>
+// =============================================================
+@use "sass:map";
+@use "../abstracts/variables" as *;
+
+:root {
+  color-scheme: light;
+
+  --bg: #{$light-bg};
+  --bg-hero: #{$light-bg-hero};
+  --bg-alt: #{$light-bg-alt};
+  --bg-contact: #{$light-bg-contact};
+  --surface: #{$light-surface};
+  --surface-2: #{$light-surface-2};
+  --menubar: #{$light-menubar};
+
+  --text: #{$light-text};
+  --text-muted: #{$light-text-muted};
+  --text-soft: #{$light-text-soft};
+
+  --border: #{$light-border};
+  --tag-bg: #{$light-tag-bg};
+
+  --accent: #{$violet-500};
+  --accent-hover: #{$violet-600};
+  --accent-text: #{$violet-500};
+  --accent-soft: #{$violet-100};
+  --on-accent: #ffffff;
+
+  --success: #{$green-400};
+
+  --hero-glow: rgba(112, 87, 232, 0.14);
+  --shadow-card: 0 24px 60px -24px rgba(48, 34, 120, 0.25), 0 2px 6px rgba(48, 34, 120, 0.05);
+
+  --font-sans: #{$font-sans};
+  --font-mono: #{$font-mono};
+
+  --container: #{$container-max};
+  --gutter: #{$container-pad};
+  --header-h: 80px;
+
+  @media (min-width: map.get($breakpoints, "lg")) {
+    --header-h: 96px;
+  }
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --bg: #{$dark-bg};
+  --bg-hero: #{$dark-bg-hero};
+  --bg-alt: #{$dark-bg-alt};
+  --bg-contact: #{$dark-bg-contact};
+  --surface: #{$dark-surface};
+  --surface-2: #{$dark-surface-2};
+  --menubar: #{$dark-menubar};
+
+  --text: #{$dark-text};
+  --text-muted: #{$dark-text-muted};
+  --text-soft: #{$dark-text-soft};
+
+  --border: #{$dark-border};
+  --tag-bg: #{$dark-tag-bg};
+
+  --accent-text: #{$violet-300};
+  --accent-soft: rgba(157, 140, 245, 0.16);
+
+  --hero-glow: rgba(112, 87, 232, 0.2);
+  --shadow-card: 0 24px 60px -24px rgba(0, 0, 0, 0.6);
+}

@@ -1,0 +1,29 @@
+// =============================================================
+// _animations.scss — apparition au scroll (piloté par main.js)
+// =============================================================
+@use "../abstracts/variables" as *;
+
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity $duration-slow $ease-out, transform $duration-slow $ease-out;
+  transition-delay: var(--delay, 0s);
+
+  &.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  // Sans JS, tout reste visible
+  .no-js & {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}

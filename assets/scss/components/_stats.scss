@@ -1,0 +1,34 @@
+// =============================================================
+// _stats.scss — 03 jeux / 12 prototypes / ∞ envies
+// =============================================================
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.stats {
+  display: flex;
+  gap: 26px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+
+  @include mq(md) {
+    gap: 62px;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__value {
+    font-size: 28px;
+    font-weight: $fw-regular;
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+    color: var(--text);
+  }
+
+  &__label {
+    font-size: 11px;
+    color: var(--text-muted);
+  }
+}

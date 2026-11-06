@@ -1,0 +1,134 @@
+// =============================================================
+// _teaser.scss — jeu à venir (Lullaby), toujours en sombre
+// =============================================================
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.teaser {
+  position: relative;
+  overflow: hidden;
+  padding: 26px 22px 28px;
+  border-radius: $radius-lg;
+  border: 1px solid #2a2433;
+  background:
+    radial-gradient(70% 90% at 85% 15%, rgba(214, 170, 120, 0.14), transparent 60%),
+    radial-gradient(60% 80% at 10% 100%, rgba(112, 87, 232, 0.18), transparent 65%),
+    #120f17;
+  color: #efe7dc;
+
+  @include mq(md) {
+    padding: 34px 36px 38px;
+  }
+
+  @include mq(md) {
+    grid-column: 1 / -1;
+  }
+
+  // Grain léger façon VHS
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.025) 0 1px, transparent 1px 3px);
+    pointer-events: none;
+  }
+
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  &__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 26px;
+  }
+
+  &__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    @include mono-label(10px, 0.14em);
+    color: #e8c99b;
+
+    &::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #e0574f;
+      animation: rec 1.6s steps(1) infinite;
+    }
+  }
+
+  &__count {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: rgba(239, 231, 220, 0.5);
+  }
+
+  &__grid {
+    display: grid;
+    gap: 22px;
+
+    @include mq(lg) {
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: end;
+    }
+  }
+
+  &__date {
+    @include mono-label(10.5px, 0.1em);
+    color: rgba(239, 231, 220, 0.55);
+    margin-bottom: 12px;
+  }
+
+  &__title {
+    font-size: clamp(48px, 13vw, 96px);
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    line-height: 1;
+    color: #f4ece0;
+    margin-bottom: 14px;
+  }
+
+  &__tagline {
+    font-size: 17px;
+    font-style: italic;
+    font-weight: 300;
+    color: #e8c99b;
+  }
+
+  &__story {
+    p {
+      font-size: 15px;
+      line-height: 1.68;
+      color: rgba(239, 231, 220, 0.78);
+
+      & + p {
+        margin-top: 12px;
+      }
+    }
+
+    .tags {
+      margin-block: 20px 20px;
+    }
+
+    .tag {
+      background: rgba(255, 255, 255, 0.08);
+      color: rgba(239, 231, 220, 0.8);
+    }
+
+    .link-arrow {
+      color: #e8c99b;
+    }
+  }
+}
+
+@keyframes rec {
+  50% {
+    opacity: 0.2;
+  }
+}

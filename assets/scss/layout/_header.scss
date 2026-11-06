@@ -1,0 +1,212 @@
+// =============================================================
+// _header.scss — logo, navigation, menu mobile
+// =============================================================
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: transparent;
+  transition: background-color $duration $ease-out, box-shadow $duration $ease-out, backdrop-filter $duration;
+
+  &.is-scrolled {
+    background: color-mix(in srgb, var(--bg) 82%, transparent);
+    backdrop-filter: saturate(160%) blur(14px);
+    -webkit-backdrop-filter: saturate(160%) blur(14px);
+    box-shadow: 0 1px 0 var(--border);
+  }
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: var(--header-h);
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    @include mq(sm) {
+      gap: 12px;
+    }
+
+    .burger {
+      margin-left: 6px;
+    }
+  }
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 17px;
+  flex-shrink: 0;
+
+  @include mq(sm) {
+    gap: 10px;
+    font-size: 19px;
+  }
+  letter-spacing: -0.02em;
+  color: var(--text);
+
+  &__icon {
+    display: grid;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    border-radius: $radius-md;
+    background: var(--accent);
+    color: #fff;
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  strong {
+    font-weight: $fw-medium;
+  }
+}
+
+// ---------- Navigation desktop ----------
+.nav {
+  display: none;
+
+  @include mq(lg) {
+    display: flex;
+    gap: 33px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  &__link {
+    position: relative;
+    font-size: 14px;
+    color: var(--text-muted);
+    @include transition(color);
+
+    &:hover {
+      color: var(--text);
+    }
+
+    &.is-active {
+      color: var(--accent-text);
+      font-weight: $fw-semibold;
+    }
+  }
+}
+
+// ---------- Burger ----------
+.burger {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  color: var(--text);
+
+  @include mq(lg) {
+    display: none;
+  }
+
+  span {
+    position: relative;
+    display: block;
+    width: 18px;
+    height: 1.6px;
+    background: currentColor;
+    border-radius: 2px;
+    transition: background-color $duration-fast;
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: currentColor;
+      border-radius: 2px;
+      transition: transform $duration $ease-out;
+    }
+
+    &::before {
+      transform: translateY(-6px);
+    }
+
+    &::after {
+      transform: translateY(6px);
+    }
+  }
+
+  &[aria-expanded="true"] span {
+    background: transparent;
+
+    &::before {
+      transform: rotate(45deg);
+    }
+
+    &::after {
+      transform: rotate(-45deg);
+    }
+  }
+}
+
+// ---------- Menu mobile ----------
+.mobile-nav {
+  position: fixed;
+  inset: 80px 0 0;
+  z-index: 49;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 24px var(--gutter);
+  background: var(--bg);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: opacity $duration $ease-out, transform $duration $ease-out, visibility $duration;
+
+  &.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+
+  @include mq(lg) {
+    display: none;
+  }
+
+  &__link {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 30px;
+    font-weight: $fw-semibold;
+    letter-spacing: -0.03em;
+    color: var(--text);
+
+    span {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: $fw-regular;
+      letter-spacing: 0;
+      color: var(--accent-text);
+    }
+
+    b {
+      font-weight: inherit;
+    }
+  }
+}
+
+body.menu-open {
+  overflow: hidden;
+}

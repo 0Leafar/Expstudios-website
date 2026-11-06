@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="fr" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-i18n="meta.title">Expstudios — Rafael Laville, créateur de jeux vidéo</title>
+  <meta name="description" data-i18n-attr="content:meta.description" content="Expstudios, le studio de jeux vidéo indépendant de Rafael Laville à Compiègne. Market Chaos, Way Out : des petits jeux, de grandes échappées.">
+  <meta name="theme-color" content="#f4f3f7" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#141419" media="(prefers-color-scheme: dark)">
+
+  <!-- Thème + langue appliqués avant le rendu pour éviter le flash -->
+  <script>
+    (function () {
+      var d = document.documentElement, t, l;
+      d.classList.remove('no-js');
+      try { t = localStorage.getItem('theme'); l = localStorage.getItem('lang'); } catch (e) {}
+      if (!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      if (!l) l = /^fr\b/i.test(navigator.language || 'fr') ? 'fr' : 'en';
+      d.setAttribute('data-theme', t);
+      d.setAttribute('lang', l);
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <script src="assets/js/translations.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+</head>
+<body>
+
+  <!-- Sprite d'icônes -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-gamepad" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 7h11a4.5 4.5 0 0 1 4.4 5.5l-.9 4A2.6 2.6 0 0 1 16.5 18l-2-2h-5l-2 2a2.6 2.6 0 0 1-4.5-1.5l-.9-4A4.5 4.5 0 0 1 6.5 7Z"/><path d="M7.5 10.5v3M6 12h3"/><circle cx="15.5" cy="11" r=".6" fill="currentColor"/><circle cx="17.2" cy="13" r=".6" fill="currentColor"/></symbol>
+    <symbol id="i-cmd" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6v12M15 6v12M6 9h12M6 15h12"/><path d="M9 6a3 3 0 1 0-3 3M15 6a3 3 0 1 1 3 3M9 18a3 3 0 1 1-3-3M15 18a3 3 0 1 0 3-3"/></symbol>
+    <symbol id="i-wifi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 8.5a15 15 0 0 1 20 0M5 12a10 10 0 0 1 14 0M8.5 15.5a5 5 0 0 1 7 0"/><circle cx="12" cy="19" r="1" fill="currentColor"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="3.6"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></symbol>
+    <symbol id="i-arrow-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v16M5 13l7 7 7-7"/></symbol>
+    <symbol id="i-arrow-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V4M5 11l7-7 7 7"/></symbol>
+    <symbol id="i-arrow-ne" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M7 4.5v15l12.5-7.5L7 4.5Z"/></symbol>
+  </svg>
+
+  <a class="skip-link" href="#contenu" data-i18n="ui.skip">Aller au contenu</a>
+
+  <!-- ========== Barre façon macOS (desktop) ========== -->
+  <div class="menubar" aria-hidden="true">
+    <div class="menubar__left">
+      <svg class="menubar__logo"><use href="#i-cmd"/></svg>
+      <span class="menubar__name">Rafael Laville</span>
+      <a href="#jeux" tabindex="-1" data-i18n="menubar.file">Fichier</a>
+      <a href="#a-propos" tabindex="-1" data-i18n="menubar.edit">Édition</a>
+      <a href="#jeux" tabindex="-1" data-i18n="menubar.play">Jouer</a>
+      <a href="#contact" tabindex="-1" data-i18n="menubar.window">Fenêtre</a>
+    </div>
+    <div class="menubar__right">
+      <span class="menubar__label" data-i18n="menubar.label">Portfolio personnel / 2026</span>
+      <svg class="menubar__wifi"><use href="#i-wifi"/></svg>
+      <span class="menubar__lang" data-i18n="menubar.lang">FR</span>
+    </div>
+  </div>
+
+  <!-- ========== En-tête ========== -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a class="logo" href="#top" aria-label="Expstudios — accueil" data-i18n-attr="aria-label:ui.home">
+        <span class="logo__icon"><svg><use href="#i-gamepad"/></svg></span>
+        <span>Expstudios</span>
+      </a>
+
+      <nav class="nav" aria-label="Navigation principale" data-i18n-attr="aria-label:ui.mainNav">
+        <a class="nav__link is-active" href="#jeux" data-i18n="nav.games">Jeux</a>
+        <a class="nav__link" href="#projets" data-i18n="nav.projects">Projets</a>
+        <a class="nav__link" href="#a-propos" data-i18n="nav.about">À propos</a>
+        <a class="nav__link" href="#demarche" data-i18n="nav.process">La démarche</a>
+        <a class="nav__link" href="#contact" data-i18n="nav.contact">Contact</a>
+      </nav>
+
+      <div class="header__actions">
+        <div class="lang-toggle" role="group" aria-label="Langue" data-i18n-attr="aria-label:ui.language">
+          <button class="lang-toggle__btn" type="button" data-lang-set="fr" lang="fr" aria-pressed="true" aria-label="Français">FR</button>
+          <button class="lang-toggle__btn" type="button" data-lang-set="en" lang="en" aria-pressed="false" aria-label="English">EN</button>
+        </div>
+        <div class="theme-toggle" role="group" aria-label="Thème" data-i18n-attr="aria-label:ui.theme">
+          <button class="theme-toggle__btn" type="button" data-theme-set="light" aria-pressed="true" aria-label="Thème clair" data-i18n-attr="aria-label:ui.light">
+            <svg><use href="#i-sun"/></svg>
+          </button>
+          <button class="theme-toggle__btn" type="button" data-theme-set="dark" aria-pressed="false" aria-label="Thème sombre" data-i18n-attr="aria-label:ui.dark">
+            <svg><use href="#i-moon"/></svg>
+          </button>
+        </div>
+        <button class="burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobile-nav">
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Menu mobile -->
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Navigation mobile" data-i18n-attr="aria-label:ui.mobileNav">
+    <a class="mobile-nav__link" href="#jeux"><span>01</span><b data-i18n="nav.games">Jeux</b></a>
+    <a class="mobile-nav__link" href="#projets"><span>02</span><b data-i18n="nav.projects">Projets</b></a>
+    <a class="mobile-nav__link" href="#a-propos"><span>03</span><b data-i18n="nav.about">À propos</b></a>
+    <a class="mobile-nav__link" href="#demarche"><span>04</span><b data-i18n="nav.process">La démarche</b></a>
+    <a class="mobile-nav__link" href="#contact"><span>05</span><b data-i18n="nav.contact">Contact</b></a>
+  </nav>
+
+  <main id="contenu">
+
+    <div class="page-top" id="top">
+      <!-- ========== Hero ========== -->
+      <section class="hero">
+        <div class="container hero__grid">
+          <div class="hero__content">
+            <p class="status reveal" data-i18n="status.available">Disponible pour de belles idées</p>
+            <h1 class="hero__title reveal" style="--delay:.05s" data-i18n="hero.title">
+              <span>Des idées.</span>
+              <span>Des mondes.</span>
+              <span>Du jeu.</span>
+            </h1>
+            <p class="hero__lead reveal" style="--delay:.1s" data-i18n="hero.lead">
+              Je suis Rafael Laville, et Expstudios, c’est mon studio. Je transforme mes intuitions en petites aventures à explorer, une ligne de code à la fois.
+            </p>
+            <div class="hero__ctas reveal" style="--delay:.15s">
+              <a class="btn btn--primary" href="#jeux">
+                <span data-i18n="hero.ctaGames">Voir mes jeux</span>
+                <svg class="icon-arrow-down"><use href="#i-arrow-down"/></svg>
+              </a>
+              <a class="btn btn--ghost" href="#contact">
+                <span data-i18n="hero.ctaTeam">Faisons équipe</span>
+                <svg class="icon-arrow-ne"><use href="#i-arrow-ne"/></svg>
+              </a>
+            </div>
+            <p class="hero__location reveal" style="--delay:.2s">
+              <svg><use href="#i-pin"/></svg>
+              <span data-i18n="hero.location">Compiègne, France · indépendant &amp; curieux</span>
+            </p>
+          </div>
+
+          <article class="showcase window window--shadow reveal" style="--delay:.15s">
+            <div class="window__bar">
+              <div class="traffic" aria-hidden="true"><span></span><span></span><span></span></div>
+              <span class="window__title">MarketChaos.exe</span>
+              <span class="window__meta">Version 1.2.2 / Godot 4</span>
+            </div>
+            <a class="showcase__screen" href="#market-chaos" aria-label="Voir Market Chaos" data-i18n-attr="aria-label:hero.playLabel">
+              <img src="assets/img/market-chaos-menu.jpg" alt="Écran d’accueil de Market Chaos devant le supermarché" data-i18n-attr="alt:hero.alt" width="1600" height="1000" fetchpriority="high">
+            </a>
+            <div class="showcase__footer">
+              <span class="status" data-i18n="hero.badge">Jeu complet · gratuit</span>
+              <a class="link-arrow" href="#market-chaos"><span data-i18n="hero.explore">Découvrir le jeu</span> <svg><use href="#i-arrow-ne"/></svg></a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ========== Bandeau ========== -->
+      <div class="band">
+        <div class="container band__inner">
+          <span data-i18n="band.motto">IMAGINER. CODER. JOUER. RECOMMENCER.</span>
+          <span class="band__aside" data-i18n="band.aside">Un petit studio. Beaucoup d’envies. ↘</span>
+          <span class="band__arrow" aria-hidden="true"><svg><use href="#i-arrow-down"/></svg></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== 01 / Mes jeux ========== -->
+    <section class="games" id="jeux" aria-labelledby="jeux-titre">
+      <div class="container">
+        <div class="games__head">
+          <div class="reveal">
+            <span class="eyebrow" data-i18n="games.eyebrow">01 / Mes jeux</span>
+            <h2 class="section-title" id="jeux-titre" data-i18n="games.title">Petits jeux.<br>Grandes échappées.</h2>
+          </div>
+          <p class="games__count reveal" data-i18n="games.count">3 univers · dont 1 à venir</p>
+        </div>
+
+        <div class="games__list">
+          <!-- Market Chaos -->
+          <article class="game-card game-card--featured window reveal" id="market-chaos">
+            <div class="window__bar">
+              <div class="traffic" aria-hidden="true"><span></span><span></span><span></span></div>
+              <span class="window__title" data-i18n="games.mc.bar">Dernière sortie — Market Chaos</span>
+              <span class="window__meta" data-i18n="games.mc.barMeta">Jeu complet</span>
+            </div>
+            <div class="game-card__layout">
+              <div class="game-card__media gallery">
+                <img class="gallery__main" src="assets/img/market-chaos-chaos.jpg" alt="Un client furieux crie « Vous allez me le payer ! » dans la supérette" width="1600" height="1000" loading="lazy">
+                <div class="gallery__thumbs" role="group" aria-label="Captures d’écran" data-i18n-attr="aria-label:ui.screens">
+                  <button class="gallery__thumb is-active" type="button" data-full="assets/img/market-chaos-chaos.jpg" aria-label="Un client furieux crie « Vous allez me le payer ! » dans la supérette" data-i18n-attr="aria-label:games.mc.s1" aria-current="true">
+                    <img src="assets/img/market-chaos-chaos-thumb.jpg" alt="" width="240" height="150" loading="lazy">
+                  </button>
+                  <button class="gallery__thumb" type="button" data-full="assets/img/market-chaos-menu.jpg" aria-label="Écran d’accueil de Market Chaos devant le supermarché" data-i18n-attr="aria-label:hero.alt">
+                    <img src="assets/img/market-chaos-menu-thumb.jpg" alt="" width="240" height="150" loading="lazy">
+                  </button>
+                  <button class="gallery__thumb" type="button" data-full="assets/img/market-chaos-nuit.jpg" aria-label="Les rayons de l’épicerie de nuit" data-i18n-attr="aria-label:games.mc.s3">
+                    <img src="assets/img/market-chaos-nuit-thumb.jpg" alt="" width="240" height="150" loading="lazy">
+                  </button>
+                  <button class="gallery__thumb" type="button" data-full="assets/img/market-chaos-bio.jpg" aria-label="Entrée du marché bio, chariot en main" data-i18n-attr="aria-label:games.mc.s4">
+                    <img src="assets/img/market-chaos-bio-thumb.jpg" alt="" width="240" height="150" loading="lazy">
+                  </button>
+                </div>
+              </div>
+              <div class="game-card__body">
+                <div class="game-card__head">
+                  <h3 class="game-card__title">Market Chaos</h3>
+                  <span class="game-card__count">01 / 03</span>
+                </div>
+                <p class="game-card__tagline" data-i18n="games.mc.tagline">Une simulation de supermarché comique, à la première personne.</p>
+                <p class="game-card__desc" data-i18n="games.mc.desc">Ton service commence. Remplis les rayons, pousse les chariots, nettoie les flaques, sers des clients impatients… sans tout casser. Le manager te surveille, et il ne pardonne rien.</p>
+                <ul class="game-card__features">
+                  <li data-i18n="games.mc.f1">4 magasins, de la supérette à l’hypermarché en folie</li>
+                  <li data-i18n="games.mc.f2">Tout est physique : cartons, canettes, chariots, sols glissants</li>
+                  <li data-i18n="games.mc.f3">Une note de D à S à chaque niveau</li>
+                </ul>
+                <ul class="tags">
+                  <li class="tag" data-i18n="tags.puzzle">Puzzle</li>
+                  <li class="tag" data-i18n="tags.physics">Physique</li>
+                  <li class="tag">Godot 4</li>
+                  <li class="tag">GDScript</li>
+                  <li class="tag">FR / EN</li>
+                </ul>
+                <p class="game-card__role" data-i18n="games.mc.role">Modèles, sons et musique créés en code · Windows</p>
+                <p class="game-card__meta" data-i18n="games.mc.meta">Version 1.2.2 · Gratuit sur itch.io</p>
+                <a class="btn btn--primary btn--sm" href="https://expstudios.itch.io/market-chaos" target="_blank" rel="noopener">
+                  <span data-i18n="games.mc.cta">Télécharger le jeu</span>
+                  <svg class="icon-arrow-ne"><use href="#i-arrow-ne"/></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Way Out -->
+          <article class="game-card game-card--featured game-card--reverse window reveal" id="way-out">
+            <div class="window__bar">
+              <div class="traffic" aria-hidden="true"><span></span><span></span><span></span></div>
+              <span class="window__title" data-i18n="games.wo.bar">En démo — Way Out</span>
+              <span class="window__meta" data-i18n="games.wo.barMeta">Démo jouable</span>
+            </div>
+            <div class="game-card__layout">
+              <div class="game-card__media gallery">
+                <img class="gallery__main" src="assets/img/way-out-porte.jpg" alt="Une porte rouille entrouverte sur un couloir carrelé" width="1600" height="1000" loading="lazy">
+                <div class="gallery__thumbs" role="group" aria-label="Captures d’écran" data-i18n-attr="aria-label:ui.screens">
+                  <button class="gallery__thumb is-active" type="button" data-full="assets/img/way-out-porte.jpg" aria-label="Une porte rouille entrouverte sur un couloir carrelé" data-i18n-attr="aria-label:games.wo.s1" aria-current="true">
+                    <img src="assets/img/way-out-porte-thumb.jpg" alt="" width="240" height="150" loading="lazy">
+                  </button>
+                  <button class="gallery__thumb" type="button" data-full="assets/img/way-out-titre.jpg" aria-label="Écran titre de Way Out, niveau B-7" data-i18n-attr="aria-label:games.wo.s2">
+                    <img src="assets/img/way-out-titre-thumb.jpg" alt="" width="240" height="150" loading="lazy">
+                  </button>
+                  <button class="gallery__thumb" type="button" data-full="assets/img/way-out-cle.jpg" aria-label="Objectif : retrouver la clé rouge, à la lampe torche" data-i18n-attr="aria-label:games.wo.s3">
+                    <img src="assets/img/way-out-cle-thumb.jpg" alt="" width="240" height="150" loading="lazy">
+                  </button>
+                  <button class="gallery__thumb" type="button" data-full="assets/img/way-out-couloirs.jpg" aria-label="Des couloirs carrelés à perte de vue" data-i18n-attr="aria-label:games.wo.s4">
+                    <img src="assets/img/way-out-couloirs-thumb.jpg" alt="" width="240" height="150" loading="lazy">
+                  </button>
+                </div>
+              </div>
+              <div class="game-card__body">
+                <div class="game-card__head">
+                  <h3 class="game-card__title">Way Out</h3>
+                  <span class="game-card__count">02 / 03</span>
+                </div>
+                <p class="game-card__tagline" data-i18n="games.wo.tagline">Chaque labyrinthe a un secret.</p>
+                <p class="game-card__desc" data-i18n="games.wo.desc">Tu te réveilles dans une mystérieuse installation souterraine : des couloirs sans fin, des machines étranges et des messages laissés par des inconnus. Explore, trouve des indices, résous les énigmes… et découvre pourquoi tu es là.</p>
+                <ul class="game-card__features">
+                  <li data-i18n="games.wo.f1">Exploration à la première personne</li>
+                  <li data-i18n="games.wo.f2">Indices dans le décor et histoire cachée</li>
+                  <li data-i18n="games.wo.f3">Une ambiance tendue, faite de sons et de silences</li>
+                </ul>
+                <ul class="tags">
+                  <li class="tag" data-i18n="tags.adventure">Aventure</li>
+                  <li class="tag" data-i18n="tags.mystery">Mystère</li>
+                  <li class="tag">JavaScript</li>
+                  <li class="tag">WebGL</li>
+                  <li class="tag">Electron</li>
+                </ul>
+                <p class="game-card__role" data-i18n="games.wo.role">Sans moteur de jeu : 3D faite en code · Windows</p>
+                <p class="game-card__meta" data-i18n="games.wo.meta">Démo 0.1.4 · Les 2 premiers secteurs</p>
+                <a class="btn btn--ghost btn--sm" href="https://expstudios.itch.io/way-out-demo" target="_blank" rel="noopener">
+                  <span data-i18n="games.wo.cta">Jouer à la démo</span>
+                  <svg class="icon-arrow-ne"><use href="#i-arrow-ne"/></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Lullaby (à venir) -->
+          <article class="teaser reveal" id="lullaby">
+            <div class="teaser__head">
+              <span class="teaser__badge" data-i18n="games.lu.badge">Prochainement</span>
+              <span class="teaser__count">03 / 03</span>
+            </div>
+            <div class="teaser__grid">
+              <div>
+                <p class="teaser__date">14.10.2019 · <span data-i18n="games.lu.place">Fabrique Clairlune</span></p>
+                <h3 class="teaser__title">Lullaby</h3>
+                <p class="teaser__tagline" data-i18n="games.lu.tagline">Viens au bout du couloir.</p>
+              </div>
+              <div class="teaser__story">
+                <p data-i18n="games.lu.p1">Anna, ta sœur, a disparu dans la fabrique Clairlune le 14 octobre 2019. Six ans plus tard, tu reçois une lettre avec une clé… et une cassette d’Anna qui te demande de venir au bout du couloir.</p>
+                <p data-i18n="games.lu.p2">Le problème ? Les employés ont laissé derrière eux Lulu, la peluche brebis qui berçait les enfants.</p>
+                <ul class="tags">
+                  <li class="tag" data-i18n="tags.horror">Horreur</li>
+                  <li class="tag" data-i18n="tags.story">Narratif</li>
+                  <li class="tag" data-i18n="tags.soon">Bientôt</li>
+                </ul>
+                <a class="link-arrow" href="https://itch.io/profile/expstudios" target="_blank" rel="noopener"><span data-i18n="games.lu.cta">Suivre la sortie sur itch.io</span> <svg><use href="#i-arrow-ne"/></svg></a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="games__foot">
+          <p data-i18n="games.foot">Des jeux imparfaits. Du plaisir bien réel.</p>
+          <a class="link-arrow" href="https://itch.io/profile/expstudios" target="_blank" rel="noopener"><span data-i18n="games.itch">Mon itch.io</span> <svg><use href="#i-arrow-ne"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ========== 02 / Projets dev ========== -->
+    <section class="projects" id="projets" aria-labelledby="projets-titre">
+      <div class="container">
+        <div class="games__head">
+          <div class="reveal">
+            <span class="eyebrow" data-i18n="projects.eyebrow">02 / Mes autres projets dev</span>
+            <h2 class="section-title" id="projets-titre" data-i18n="projects.title">Avant les jeux,<br>il y avait le code.</h2>
+          </div>
+          <p class="games__count reveal" data-i18n="projects.count">5 dépôts sur GitHub · JS &amp; Electron</p>
+        </div>
+
+        <div class="projects__grid">
+          <!-- Portfolio (mis en avant) -->
+          <article class="project-card project-card--featured reveal">
+            <div class="project-card__bar">
+              <div class="traffic" aria-hidden="true"><span></span><span></span><span></span></div>
+              <span class="project-card__repo">0Leafar/Portfolio</span>
+              <span class="project-card__badge" data-i18n="projects.portfolio.badge">Premier site</span>
+            </div>
+            <div class="project-card__body">
+              <h3 class="project-card__title" data-i18n="projects.portfolio.title">Mon premier portfolio</h3>
+              <p class="project-card__desc" data-i18n="projects.portfolio.desc">Mon tout premier site, codé entièrement par moi en HTML, CSS et JavaScript : présentation, outils, projets et un mode clair/sombre. Le point de départ de tout le reste.</p>
+              <ul class="tags">
+                <li class="tag">HTML</li>
+                <li class="tag">CSS</li>
+                <li class="tag">JavaScript</li>
+              </ul>
+              <div class="project-card__links">
+                <a class="btn btn--primary btn--sm" href="https://0leafar.github.io/Portfolio/" target="_blank" rel="noopener">
+                  <span data-i18n="projects.visit">Voir le site</span>
+                  <svg class="icon-arrow-ne"><use href="#i-arrow-ne"/></svg>
+                </a>
+                <a class="link-arrow link-arrow--plain" href="https://github.com/0Leafar/Portfolio" target="_blank" rel="noopener"><span data-i18n="projects.code">Voir le code</span> <svg><use href="#i-arrow-ne"/></svg></a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Calculatrice -->
+          <article class="project-card reveal" style="--delay:.05s">
+            <div class="project-card__bar">
+              <div class="traffic" aria-hidden="true"><span></span><span></span><span></span></div>
+              <span class="project-card__repo">0Leafar/calculatrice-electron</span>
+            </div>
+            <div class="project-card__body">
+              <h3 class="project-card__title" data-i18n="projects.calc.title">Calculatrice</h3>
+              <p class="project-card__desc" data-i18n="projects.calc.desc">Une calculatrice de bureau au design épuré et minimaliste.</p>
+              <ul class="tags">
+                <li class="tag">JavaScript</li>
+                <li class="tag">Electron</li>
+              </ul>
+              <div class="project-card__links">
+                <a class="link-arrow" href="https://github.com/0Leafar/calculatrice-electron" target="_blank" rel="noopener"><span data-i18n="projects.code">Voir le code</span> <svg><use href="#i-arrow-ne"/></svg></a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Calendrier pixelisé -->
+          <article class="project-card reveal">
+            <div class="project-card__bar">
+              <div class="traffic" aria-hidden="true"><span></span><span></span><span></span></div>
+              <span class="project-card__repo">0Leafar/calendar-app</span>
+            </div>
+            <div class="project-card__body">
+              <h3 class="project-card__title" data-i18n="projects.cal.title">Calendrier pixelisé</h3>
+              <p class="project-card__desc" data-i18n="projects.cal.desc">Un calendrier façon pixel art : on crée des événements avec une heure, et une notification arrive la veille.</p>
+              <ul class="tags">
+                <li class="tag">JavaScript</li>
+                <li class="tag">Electron</li>
+              </ul>
+              <div class="project-card__links">
+                <a class="link-arrow" href="https://github.com/0Leafar/calendar-app" target="_blank" rel="noopener"><span data-i18n="projects.code">Voir le code</span> <svg><use href="#i-arrow-ne"/></svg></a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Widget Pixel -->
+          <article class="project-card reveal" style="--delay:.05s">
+            <div class="project-card__bar">
+              <div class="traffic" aria-hidden="true"><span></span><span></span><span></span></div>
+              <span class="project-card__repo">0Leafar/rafaelcalendrier</span>
+            </div>
+            <div class="project-card__body">
+              <h3 class="project-card__title" data-i18n="projects.widget.title">Widget Pixel</h3>
+              <p class="project-card__desc" data-i18n="projects.widget.desc">Un widget de bureau pixelisé qui affiche le mois et le jour sur fond rose. La toute première version du calendrier.</p>
+              <ul class="tags">
+                <li class="tag">JavaScript</li>
+                <li class="tag">Electron</li>
+              </ul>
+              <div class="project-card__links">
+                <a class="link-arrow" href="https://github.com/0Leafar/rafaelcalendrier" target="_blank" rel="noopener"><span data-i18n="projects.code">Voir le code</span> <svg><use href="#i-arrow-ne"/></svg></a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Minuteur -->
+          <article class="project-card reveal" style="--delay:.1s">
+            <div class="project-card__bar">
+              <div class="traffic" aria-hidden="true"><span></span><span></span><span></span></div>
+              <span class="project-card__repo">0Leafar/pixel-timer</span>
+            </div>
+            <div class="project-card__body">
+              <h3 class="project-card__title" data-i18n="projects.timer.title">Minuteur pixel</h3>
+              <p class="project-card__desc" data-i18n="projects.timer.desc">Un minuteur en forme de widget, à garder dans un coin de l’écran.</p>
+              <ul class="tags">
+                <li class="tag">JavaScript</li>
+                <li class="tag">Electron</li>
+              </ul>
+              <div class="project-card__links">
+                <a class="link-arrow" href="https://github.com/0Leafar/pixel-timer" target="_blank" rel="noopener"><span data-i18n="projects.code">Voir le code</span> <svg><use href="#i-arrow-ne"/></svg></a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="games__foot">
+          <p data-i18n="projects.foot">Tous mes projets sont open source.</p>
+          <a class="link-arrow" href="https://github.com/0Leafar" target="_blank" rel="noopener"><span data-i18n="projects.github">Mon GitHub</span> <svg><use href="#i-arrow-ne"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 03 / À propos ========== -->
+    <section class="about" id="a-propos" aria-labelledby="about-titre">
+      <div class="container">
+        <article class="window reveal">
+          <div class="window__bar">
+            <div class="traffic" aria-hidden="true"><span></span><span></span><span></span></div>
+            <span class="window__title" data-i18n="about.bar">À propos de moi.txt</span>
+            <span class="window__meta" data-i18n="about.barMeta">Un humain derrière les pixels</span>
+          </div>
+
+          <div class="about__body">
+            <figure class="about__photo">
+              <img src="assets/img/rafael-laville.jpg" alt="Portrait illustré de Rafael Laville en bonnet et écharpe" data-i18n-attr="alt:about.photoAlt" width="800" height="800" loading="lazy">
+              <figcaption class="about__id">
+                <div>
+                  <p class="about__name">Rafael Laville</p>
+                  <p class="about__role">Player one · Compiègne, FR</p>
+                </div>
+                <span class="about__signature" aria-hidden="true">Rafael.</span>
+              </figcaption>
+            </figure>
+
+            <div class="about__content">
+              <span class="eyebrow" data-i18n="about.eyebrow">03 / Derrière l’écran</span>
+              <h2 class="about__title" id="about-titre" data-i18n="about.title">
+                <span>Sérieux dans la création.</span>
+                <span>Pas dans les règles du jeu.</span>
+              </h2>
+              <div class="about__text">
+                <p data-i18n="about.p1">J’ai commencé à créer des jeux en 2026. Ce qui me plaît, c’est de construire des univers à suivre chapitre après chapitre, avec un lore qui donne envie de creuser. Mon objectif : des jeux aussi soignés que des AAA.</p>
+                <p data-i18n="about.p2">Des idées, j’en ai tout le temps. Je les confie à Claude, l’IA qui écrit le code ; moi, je joue, je repère les bugs et je dis ce que je veux, jusqu’à ce que le jeu soit exactement celui que j’avais en tête.</p>
+              </div>
+              <ul class="tags">
+                <li class="tag">Godot 4</li>
+                <li class="tag">GDScript</li>
+                <li class="tag">JavaScript</li>
+                <li class="tag">WebGL</li>
+                <li class="tag">Electron</li>
+                <li class="tag">Node.js</li>
+                <li class="tag">Python</li>
+                <li class="tag">Claude</li>
+              </ul>
+              <dl class="stats">
+                <div class="stats__item">
+                  <dt class="sr-only" data-i18n="about.statGamesDt">Jeux</dt>
+                  <dd class="stats__value" data-count="3" data-pad="2">03</dd>
+                  <dd class="stats__label" data-i18n="about.statGames">jeux, dont 1 à venir</dd>
+                </div>
+                <div class="stats__item">
+                  <dt class="sr-only" data-i18n="about.statProjDt">Projets</dt>
+                  <dd class="stats__value" data-count="5" data-pad="2">05</dd>
+                  <dd class="stats__label" data-i18n="about.statProj">projets dev</dd>
+                </div>
+                <div class="stats__item">
+                  <dt class="sr-only" data-i18n="about.statInfDt">Envies</dt>
+                  <dd class="stats__value">∞</dd>
+                  <dd class="stats__label" data-i18n="about.statInf">envies de jouer</dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ========== 04 / La démarche ========== -->
+    <section class="process" id="demarche" aria-labelledby="demarche-titre">
+      <div class="container process__grid">
+        <div class="process__intro reveal">
+          <span class="eyebrow" data-i18n="process.eyebrow">04 / De l’idée au game feel</span>
+          <h2 class="process__title" id="demarche-titre" data-i18n="process.title">Une intuition. Puis beaucoup d’itérations.</h2>
+          <p class="process__lead" data-i18n="process.lead">Pas de bouton magique : un dialogue permanent entre mes idées et l’IA, partie après partie.</p>
+        </div>
+
+        <ol class="steps">
+          <li class="steps__item reveal">
+            <span class="steps__num">01</span>
+            <div>
+              <h3 class="steps__title" data-i18n="process.s1t">Avoir l’idée</h3>
+              <p class="steps__text" data-i18n="process.s1">Un univers, une mécanique, une histoire à raconter par chapitres. Des idées, j’en ai en permanence : je garde celle qui me donne le plus envie de jouer.</p>
+            </div>
+          </li>
+          <li class="steps__item reveal" style="--delay:.06s">
+            <span class="steps__num">02</span>
+            <div>
+              <h3 class="steps__title" data-i18n="process.s2t">La confier à Claude</h3>
+              <p class="steps__text" data-i18n="process.s2">Je décris ce que je veux, Claude écrit le code : le jeu, les modèles 3D, les sons, la musique. Tout est généré en code, sans Blender.</p>
+            </div>
+          </li>
+          <li class="steps__item reveal" style="--delay:.12s">
+            <span class="steps__num">03</span>
+            <div>
+              <h3 class="steps__title" data-i18n="process.s3t">Tester. Corriger. Recommencer.</h3>
+              <p class="steps__text" data-i18n="process.s3">Je joue, je repère les bugs, je dis ce qui ne va pas. Des bots de test tournent aussi tout seuls. On itère jusqu’à ce que le jeu soit exactement celui que j’avais en tête.</p>
+            </div>
+          </li>
+        </ol>
+
+        <div class="terminal window reveal" aria-hidden="true">
+          <div class="window__bar">
+            <div class="traffic"><span></span><span></span><span></span></div>
+            <span class="window__title">atelier — zsh</span>
+          </div>
+          <div class="terminal__body" id="terminal">
+            <div class="terminal__line terminal__prompt" data-i18n="process.t0">rafael@atelier ~ % claude "fais-moi un jeu"</div>
+            <div class="terminal__line terminal__ok" data-i18n="process.t1">√ une idée qui intrigue</div>
+            <div class="terminal__line terminal__ok" data-i18n="process.t2">√ un prototype qui répond</div>
+            <div class="terminal__line terminal__wait"><span data-i18n="process.t3">↻ encore une partie…</span><span class="terminal__cursor"></span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 05 / Contact ========== -->
+    <section class="contact" id="contact" aria-labelledby="contact-titre">
+      <div class="container">
+        <div class="contact__grid">
+          <div class="contact__intro reveal">
+            <span class="eyebrow" data-i18n="contact.eyebrow">05 / On appuie sur start ?</span>
+            <h2 class="contact__title" id="contact-titre" data-i18n="contact.title">
+              <span>Et si on créait</span>
+              <span>un truc qui se joue ?</span>
+            </h2>
+          </div>
+
+          <div class="contact__side reveal" style="--delay:.08s">
+            <p class="status" data-i18n="status.available">Disponible pour de belles idées</p>
+            <p class="contact__text" data-i18n="contact.text">Une idée de jeu, une collaboration ou juste envie de parler pixels ? Tous les jeux du studio sont à découvrir ici.</p>
+            <a class="contact__mail" href="https://itch.io/profile/expstudios" target="_blank" rel="noopener">
+              <span data-i18n="contact.big">expstudios sur itch.io</span>
+              <svg><use href="#i-arrow-ne"/></svg>
+            </a>
+            <div class="contact__links">
+              <a class="link-arrow link-arrow--plain" href="https://itch.io/profile/expstudios" target="_blank" rel="noopener">itch.io <svg><use href="#i-arrow-ne"/></svg></a>
+              <a class="link-arrow link-arrow--plain" href="https://github.com/0Leafar" target="_blank" rel="noopener">GitHub <svg><use href="#i-arrow-ne"/></svg></a>
+            </div>
+          </div>
+        </div>
+
+        <footer class="footer">
+          <p class="footer__copy">© <span id="year">2026</span> Rafael Laville · Expstudios</p>
+          <p class="footer__note" data-i18n="footer.note">Fait avec curiosité, café et quelques prompts.</p>
+          <a class="footer__top" href="#top"><span data-i18n="footer.top">Retour en haut</span> <svg><use href="#i-arrow-up"/></svg></a>
+        </footer>
+      </div>
+    </section>
+
+  </main>
+</body>
+</html>
