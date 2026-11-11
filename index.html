@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title data-i18n="meta.title">Expstudios — Rafael Laville, créateur de jeux vidéo</title>
-  <meta name="description" data-i18n-attr="content:meta.description" content="Expstudios, le studio de jeux vidéo indépendant de Rafael Laville à Compiègne. Market Chaos, Way Out : des petits jeux, de grandes échappées.">
+  <meta name="description" data-i18n-attr="content:meta.description" content="Expstudios, le studio de jeux vidéo indépendant de Rafael Laville à Compiègne. Market Chaos, Way Out, et bientôt Lullaby : des petits jeux, de grandes échappées.">
   <meta name="theme-color" content="#f4f3f7" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#141419" media="(prefers-color-scheme: dark)">
 
@@ -142,18 +142,65 @@
             </p>
           </div>
 
+          <!-- Annonce : Lullaby, le prochain jeu (teaser façon cassette VHS) -->
           <article class="showcase window window--shadow reveal" style="--delay:.15s">
             <div class="window__bar">
               <div class="traffic" aria-hidden="true"><span></span><span></span><span></span></div>
-              <span class="window__title">MarketChaos.exe</span>
-              <span class="window__meta">Version 1.2.2 / Godot 4</span>
+              <span class="window__title">Lullaby.exe</span>
+              <span class="window__meta" data-i18n="hero.teaserMeta">Teaser / En préparation</span>
             </div>
-            <a class="showcase__screen" href="#market-chaos" aria-label="Voir Market Chaos" data-i18n-attr="aria-label:hero.playLabel">
-              <img src="assets/img/market-chaos-menu.jpg" alt="Écran d’accueil de Market Chaos devant le supermarché" data-i18n-attr="alt:hero.alt" width="1600" height="1000" fetchpriority="high">
+            <a class="showcase__screen tease" href="#lullaby" aria-label="Découvrir Lullaby, le prochain jeu d’Expstudios" data-i18n-attr="aria-label:hero.teaserLabel">
+              <svg class="tease__scene" viewBox="0 0 160 100" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+                <defs>
+                  <radialGradient id="tease-glow" cx="50%" cy="56%" r="30%">
+                    <stop offset="0" stop-color="#e8c99b" stop-opacity=".55"/>
+                    <stop offset="1" stop-color="#e8c99b" stop-opacity="0"/>
+                  </radialGradient>
+                  <linearGradient id="tease-door" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#f4dcb4"/>
+                    <stop offset="1" stop-color="#c98f55"/>
+                  </linearGradient>
+                </defs>
+                <!-- Halo au bout du couloir -->
+                <rect width="160" height="100" fill="url(#tease-glow)"/>
+                <!-- Murs, sol, plafond -->
+                <g class="tease__lines" fill="none">
+                  <path d="M0 0 68 38M160 0 92 38M0 100 68 62M160 100 92 62"/>
+                  <rect x="68" y="38" width="24" height="24"/>
+                  <path d="M62.6 65h34.8M55.5 69h49M43 76h74M25 86h110"/>
+                  <path d="M80 62 80 100M74 62 56 100M86 62 104 100"/>
+                </g>
+                <!-- Néons du plafond -->
+                <g class="tease__lights">
+                  <rect x="78" y="34.6" width="4" height=".8"/>
+                  <rect x="77" y="30.4" width="6" height="1.1"/>
+                  <rect class="tease__flicker" x="75" y="23.4" width="10" height="1.5"/>
+                  <rect x="72" y="13" width="16" height="2.2"/>
+                </g>
+                <!-- La porte entrouverte… et Lulu qui attend -->
+                <rect class="tease__door" x="75" y="44" width="10" height="18" fill="url(#tease-door)"/>
+                <g class="tease__lulu" fill="#120f17">
+                  <ellipse cx="80" cy="59.2" rx="3.1" ry="2.2"/>
+                  <circle cx="78" cy="57.4" r="1.4"/>
+                  <circle cx="80.2" cy="56.9" r="1.5"/>
+                  <circle cx="82.2" cy="57.6" r="1.3"/>
+                  <ellipse cx="83.6" cy="57" rx="1.3" ry="1.1"/>
+                  <path d="M78.2 61h.7v1h-.7zM81.2 61h.7v1h-.7z"/>
+                </g>
+              </svg>
+
+              <span class="tease__rec" aria-hidden="true">REC</span>
+              <span class="tease__stamp" aria-hidden="true">14.10.2019</span>
+
+              <span class="tease__content">
+                <span class="tease__kicker" data-i18n="hero.teaserKicker">Expstudios présente</span>
+                <span class="tease__title">Lullaby</span>
+                <span class="tease__tagline" data-i18n="games.lu.tagline">Viens au bout du couloir.</span>
+              </span>
             </a>
             <div class="showcase__footer">
-              <span class="status" data-i18n="hero.badge">Jeu complet · gratuit</span>
-              <a class="link-arrow" href="#market-chaos"><span data-i18n="hero.explore">Découvrir le jeu</span> <svg><use href="#i-arrow-ne"/></svg></a>
+              <span class="status status--rec" data-i18n="hero.badge">Nouveau jeu en préparation</span>
+              <a class="link-arrow" href="#lullaby"><span data-i18n="hero.explore">Lire l’annonce</span> <svg><use href="#i-arrow-ne"/></svg></a>
             </div>
           </article>
         </div>
@@ -163,7 +210,7 @@
       <div class="band">
         <div class="container band__inner">
           <span data-i18n="band.motto">IMAGINER. CODER. JOUER. RECOMMENCER.</span>
-          <span class="band__aside" data-i18n="band.aside">Un petit studio. Beaucoup d’envies. ↘</span>
+          <span class="band__aside" data-i18n="band.aside">Prochain chapitre : Lullaby. ↘</span>
           <span class="band__arrow" aria-hidden="true"><svg><use href="#i-arrow-down"/></svg></span>
         </div>
       </div>
@@ -195,7 +242,7 @@
                   <button class="gallery__thumb is-active" type="button" data-full="assets/img/market-chaos-chaos.jpg" aria-label="Un client furieux crie « Vous allez me le payer ! » dans la supérette" data-i18n-attr="aria-label:games.mc.s1" aria-current="true">
                     <img src="assets/img/market-chaos-chaos-thumb.jpg" alt="" width="240" height="150" loading="lazy">
                   </button>
-                  <button class="gallery__thumb" type="button" data-full="assets/img/market-chaos-menu.jpg" aria-label="Écran d’accueil de Market Chaos devant le supermarché" data-i18n-attr="aria-label:hero.alt">
+                  <button class="gallery__thumb" type="button" data-full="assets/img/market-chaos-menu.jpg" aria-label="Écran d’accueil de Market Chaos devant le supermarché" data-i18n-attr="aria-label:games.mc.s2">
                     <img src="assets/img/market-chaos-menu-thumb.jpg" alt="" width="240" height="150" loading="lazy">
                   </button>
                   <button class="gallery__thumb" type="button" data-full="assets/img/market-chaos-nuit.jpg" aria-label="Les rayons de l’épicerie de nuit" data-i18n-attr="aria-label:games.mc.s3">

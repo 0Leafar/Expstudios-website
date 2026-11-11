@@ -10,7 +10,7 @@ window.I18N = {
   en: {
     /* Meta & interface */
     'meta.title': 'Expstudios — Rafael Laville, video game maker',
-    'meta.description': 'Expstudios is the independent game studio of Rafael Laville, based in Compiègne, France. Market Chaos, Way Out: small games, big getaways.',
+    'meta.description': 'Expstudios is the independent game studio of Rafael Laville, based in Compiègne, France. Market Chaos, Way Out, and soon Lullaby: small games, big getaways.',
     'ui.skip': 'Skip to content',
     'ui.home': 'Expstudios — home',
     'ui.mainNav': 'Main navigation',
@@ -45,14 +45,15 @@ window.I18N = {
     'hero.ctaGames': 'See my games',
     'hero.ctaTeam': 'Let’s team up',
     'hero.location': 'Compiègne, France · independent &amp; curious',
-    'hero.alt': 'Market Chaos title screen in front of the supermarket',
-    'hero.playLabel': 'See Market Chaos',
-    'hero.badge': 'Full game · free',
-    'hero.explore': 'Discover the game',
+    'hero.teaserMeta': 'Teaser / In the works',
+    'hero.teaserLabel': 'Discover Lullaby, the next Expstudios game',
+    'hero.teaserKicker': 'Expstudios presents',
+    'hero.badge': 'New game in the works',
+    'hero.explore': 'Read the announcement',
 
     /* Bandeau */
     'band.motto': 'IMAGINE. CODE. PLAY. REPEAT.',
-    'band.aside': 'A small studio. Plenty of ideas. ↘',
+    'band.aside': 'Next chapter: Lullaby. ↘',
 
     /* Jeux */
     'games.eyebrow': '01 / My games',
@@ -64,6 +65,7 @@ window.I18N = {
     'games.mc.bar': 'Latest release — Market Chaos',
     'games.mc.barMeta': 'Full game',
     'games.mc.s1': 'An angry customer shouts “You’ll pay for this!” in the corner shop',
+    'games.mc.s2': 'Market Chaos title screen in front of the supermarket',
     'games.mc.s3': 'The aisles of the night grocery store',
     'games.mc.s4': 'Entering the organic market, cart in hand',
     'games.mc.tagline': 'A first-person comedy supermarket simulation.',
