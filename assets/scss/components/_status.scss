@@ -21,6 +21,13 @@
   }
 }
 
+// Variante "enregistrement" (point rouge qui clignote) pour un jeu en préparation
+.status--rec::before {
+  background: #e0574f;
+  box-shadow: none;
+  animation: rec 1.6s steps(1) infinite;
+}
+
 @keyframes pulse {
   0% {
     box-shadow: 0 0 0 0 rgba(100, 191, 138, 0.55);
